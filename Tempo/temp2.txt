@@ -1,0 +1,51 @@
+var d;
+var cont1='#contentPanel1';
+var cont2 ='#contentPanel2';
+$(document).ready(function () {
+
+    $.get("../Data/data.json", function (data, status) {
+        dta = data;
+
+        $(".row1").append("<h5>Hellya</h5>");
+        addCols(3, dta,cont1);
+     
+        $(".row2").prepend("<h5>Damm</h5>");
+        addCols(3, dta,cont2);
+    });
+
+})
+
+function addCols(num, data,cont) {
+    // alert(data.project[0].title);
+    for (var i = 0; i <= num; i++) {
+        var myCol = $('<div class=" mycard col-12 col-sm-6 col-md-3" style="margin-top:20px;" ></div>');
+        var myPanel = $( 
+            '<div class="card mycard shadow-sm border-0 mb-5  bg-white rounded" style="width: 260px;">' +
+            '<img class="card-img-top" src="../Images/ios.jpg" alt="Card image cap">' +
+            '<div class="card-body">' +
+            '<h5 class="card-title"><b>' + data.project[i].title + '</b></h5>' +
+            '<p class = "card-text" ><b>' + data.project[i].desc + '</b></p>' +
+            '<div class="d-flex justify-content-around">' +
+            '<button type="button" class="btn btn-outline-primary">Get it</button>' +
+            '&nbsp;&nbsp;&nbsp;' +
+            '<button class = "btn btn-primary" >Detail</button>' +
+            '<br>' +
+            '</div>' +
+            '<label for="">Post by</label>' +
+            '&nbsp;&nbsp;&nbsp;' +
+            '<img class="card-img-top" src="' + data.project[i].postBy + ' " alt="Card image cap" &nbsp style="width: 60px;">' +
+            '</div></div>');
+        myPanel.appendTo(myCol);
+        myCol.appendTo(cont);
+
+
+    }
+
+
+};
+
+////Html
+<div class="container" id="c">
+        <div class="row1" id="contentPanel1"></div>
+        <!-- <div class="row2"  id="contentPanel2"></div> -->
+    </div>

@@ -1,0 +1,37 @@
+var d;
+
+$(document).ready(function(){
+        
+        
+        $.get("../Data/data.json", function(data, status){
+            alert("Data: " + data.project[0].title+ "\nStatus: " + status);
+            console.log(data.project[0].title);
+        });
+        addCols(8,data);
+        alert("Data: " + data.project[0].title+ "\nStatus: " + status);
+})
+
+ function addCols(num,data){
+    for (var i=1;i<=num;i++) {
+        var myCol = $('<div class=" mycard col-12 col-sm-6 col-md-3" style="margin-top:20px;" ></div>');
+        var myPanel = $('<div class="card mycard shadow-sm border-0 mb-5  bg-white rounded" style="width: 260px;">' +
+        '<img class="card-img-top" src="../Images/ios.jpg" alt="Card image cap">' +
+        '<div class="card-body">' +
+        '<h5 class="card-title"><b>'+ data.project[0].title +'</b></h5>' +
+        '<p class = "card-text" ><b>'+  data.project[0].desc+'</b></p>' +
+        '<div class="d-flex justify-content-around">'+
+        '<button type="button" class="btn btn-outline-primary">Get it</button>'+ 
+        '&nbsp;&nbsp;&nbsp;'+
+        '<button class = "btn btn-primary" >Detail</button>'+ 
+        '<br>'+
+        '</div>'+
+        '<label for="">Post by</label>'+ 
+        '&nbsp;&nbsp;&nbsp;'+
+        '<img class="card-img-top" src="'+  data.project[0].image +'"alt="Card image cap" &nbsp style="width: 60px;">' +
+        '</div></div>');
+        myPanel.appendTo(myCol);
+        myCol.appendTo('#contentPanel');
+    }
+    
+    
+};
